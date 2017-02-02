@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `kay` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, kay">
+
+    <title>kay - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'kay', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>kay</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/kay/lib.rs.html#1-37' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p><code>Kay</code> is a high-performance actor system, suitable for simulating millions of entities.</p>
+
+<p>In <code>Kay</code>, actors concurrently send and receive asynchronous messages, but are
+otherwise completely isloated from each other. Actors can only mutate their own state.</p>
+
+<p>Have a look at <a href="trait.Actor.html"><code>Actor</code></a>, <a href="trait.Recipient.html"><code>Recipient</code></a>
+and <a href="swarm/struct.Swarm.html"><code>Swarm</code></a> to understand the main abstractions.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='swarm/index.html'
+                                  title='kay::swarm'>swarm</a></td>
+                           <td class='docblock-short'>
+                                <p>Tools for dealing with large amounts of identical actors</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ActorSystem.html'
+                                  title='kay::ActorSystem'>ActorSystem</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>ActorSystem</code> contains the states of all registered actors,
+message inboxes (queues) for each registered actor,
+and message handlers for each registered (<code>Actor</code>,<code>Message</code>) pair.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ID.html'
+                                  title='kay::ID'>ID</a></td>
+                           <td class='docblock-short'>
+                                <p>An ID that uniquely identifies an <code>Actor</code>, or even a <code>SubActor</code> within a <code>Swarm</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Packet.html'
+                                  title='kay::Packet'>Packet</a></td>
+                           <td class='docblock-short'>
+                                <p>Combination of a message and its destination recipient id</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Fate.html'
+                                  title='kay::Fate'>Fate</a></td>
+                           <td class='docblock-short'>
+                                <p>Return type of message handling functions, signifying if
+an <code>Actor</code>/<code>SubActor</code> should live on after receiving a certain message type.</p>
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='static' href='static.THE_SYSTEM.html'
+                                  title='kay::THE_SYSTEM'>THE_SYSTEM</a></td>
+                           <td class='docblock-short'>
+                                <p>Global pointer to the singleton instance of <code>ActorSystem</code>.
+Set by <code>ActorSystem::create_the_system</code>.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Actor.html'
+                                  title='kay::Actor'>Actor</a></td>
+                           <td class='docblock-short'>
+                                <p>Any Rust data structure can become an actor by:</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Message.html'
+                                  title='kay::Message'>Message</a></td>
+                           <td class='docblock-short'>
+                                <p>Trait that a datastructure must implement in order
+to be sent and received as a message.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Recipient.html'
+                                  title='kay::Recipient'>Recipient</a></td>
+                           <td class='docblock-short'>
+                                <p>Trait with which message handling for <code>Actor</code>/<code>SubActor</code>s is implemented</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "kay";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

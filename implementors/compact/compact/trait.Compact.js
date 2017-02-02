@@ -1,0 +1,10 @@
+(function() {var implementors = {};
+implementors["kay"] = ["impl&lt;M:&nbsp;<a class='trait' href='kay/trait.Message.html' title='kay::Message'>Message</a>&gt; <a class='trait' href='compact/compact/trait.Compact.html' title='compact::compact::Compact'>Compact</a> for <a class='struct' href='kay/swarm/struct.RequestConfirmation.html' title='kay::swarm::RequestConfirmation'>RequestConfirmation</a>&lt;M&gt;","impl&lt;M:&nbsp;<a class='trait' href='kay/trait.Message.html' title='kay::Message'>Message</a>&gt; <a class='trait' href='compact/compact/trait.Compact.html' title='compact::compact::Compact'>Compact</a> for <a class='struct' href='kay/swarm/struct.ToRandom.html' title='kay::swarm::ToRandom'>ToRandom</a>&lt;M&gt;","impl&lt;SA:&nbsp;<a class='trait' href='kay/swarm/trait.SubActor.html' title='kay::swarm::SubActor'>SubActor</a>&gt; <a class='trait' href='compact/compact/trait.Compact.html' title='compact::compact::Compact'>Compact</a> for <a class='struct' href='kay/swarm/struct.Create.html' title='kay::swarm::Create'>Create</a>&lt;SA&gt;","impl&lt;SA:&nbsp;<a class='trait' href='kay/swarm/trait.SubActor.html' title='kay::swarm::SubActor'>SubActor</a>, M:&nbsp;<a class='trait' href='kay/trait.Message.html' title='kay::Message'>Message</a>&gt; <a class='trait' href='compact/compact/trait.Compact.html' title='compact::compact::Compact'>Compact</a> for <a class='struct' href='kay/swarm/struct.CreateWith.html' title='kay::swarm::CreateWith'>CreateWith</a>&lt;SA, M&gt;","impl&lt;M:&nbsp;<a class='trait' href='kay/trait.Message.html' title='kay::Message'>Message</a>&gt; <a class='trait' href='compact/compact/trait.Compact.html' title='compact::compact::Compact'>Compact</a> for <a class='struct' href='kay/struct.Packet.html' title='kay::Packet'>Packet</a>&lt;M&gt;",];
+
+            if (window.register_implementors) {
+                window.register_implementors(implementors);
+            } else {
+                window.pending_implementors = implementors;
+            }
+        
+})()

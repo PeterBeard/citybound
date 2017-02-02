@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ActorSystem` struct in crate `kay`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ActorSystem">
+
+    <title>kay::ActorSystem - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>kay</a></p><script>window.sidebarCurrent = {name: 'ActorSystem', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>kay</a>::<wbr><a class='struct' href=''>ActorSystem</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/kay/actor_system.rs.html#71-79' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ActorSystem { /* fields omitted */ }</pre><div class='docblock'><p>An <code>ActorSystem</code> contains the states of all registered actors,
+message inboxes (queues) for each registered actor,
+and message handlers for each registered (<code>Actor</code>,<code>Message</code>) pair.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../kay/struct.ActorSystem.html' title='kay::ActorSystem'>ActorSystem</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/kay/actor_system.rs.html#91-214' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.create_the_system' class='method'><span id='create_the_system.v' class='invisible'><code>fn <a href='#method.create_the_system' class='fnname'>create_the_system</a>(panic_callback: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='https://doc.rust-lang.org/nightly/core/any/trait.Any.html' title='core::any::Any'>Any</a>&gt;)&gt;) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='struct' href='../kay/struct.ActorSystem.html' title='kay::ActorSystem'>ActorSystem</a>&gt;</code></span></h4>
+<div class='docblock'><p>Create the global singleton instance of <code>ActorSystem</code>.
+Sets <code>THE_SYSTEM</code>. Expects to get a panic callback as a parameter
+that is called when an actor panics during message handling
+and can thus be used to for example display the panic error message.</p>
+
+<p>Note that after an actor panicking, the whole <code>ActorSystem</code> switches
+to a panicked state and only passes messages anymore which have been
+marked as <em>critical</em> using <code>Actor::handle_critically</code>.</p>
+</div><h4 id='method.send' class='method'><span id='send.v' class='invisible'><code>fn <a href='#method.send' class='fnname'>send</a>&lt;M:&nbsp;<a class='trait' href='../kay/trait.Message.html' title='kay::Message'>Message</a>&gt;(&amp;mut self, recipient: <a class='struct' href='../kay/struct.ID.html' title='kay::ID'>ID</a>, message: M)</code></span></h4>
+<div class='docblock'><p>Send a message to the actor with a given <code>ID</code>. This is usually never called directly,
+instead, <a href="struct.ID.html#method.shl"><code>ID &lt;&lt; Message</code></a> is used to send messages.</p>
+</div><h4 id='method.process_all_messages' class='method'><span id='process_all_messages.v' class='invisible'><code>fn <a href='#method.process_all_messages' class='fnname'>process_all_messages</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Processes all sent messages, and messages which are in turn sent
+during the handling of messages, up to a recursion depth of 1000.</p>
+
+<p>This is typically called in the main loop of an application.</p>
+
+<p>By sending different &quot;top-level commands&quot; in to the system and calling
+<code>process_all_messages</code> inbetween, different aspects of an application
+(for example, UI, simulation, rendering) can be run isolated from each other,
+in a fixed order during each loop iteration.</p>
+</div><h4 id='method.short_id' class='method'><span id='short_id.v' class='invisible'><code>fn <a href='#method.short_id' class='fnname'>short_id</a>&lt;A:&nbsp;<a class='trait' href='../kay/trait.Actor.html' title='kay::Actor'>Actor</a>&gt;(&amp;self) -&gt; ShortTypeId</code></span></h4>
+<div class='docblock'><p>Get the short type id for an <code>Actor</code>. Ususally never called directly,
+use <code>Actor::id()</code> instead to get the full ID of a registered Actor.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "kay";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

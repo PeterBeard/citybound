@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `swarm` mod in crate `kay`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, swarm">
+
+    <title>kay::swarm - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kay</a></p><script>window.sidebarCurrent = {name: 'swarm', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>kay</a>::<wbr><a class='mod' href=''>swarm</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/kay/swarm.rs.html#1-461' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Tools for dealing with large amounts of identical actors</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Confirmation.html'
+                                  title='kay::swarm::Confirmation'>Confirmation</a></td>
+                           <td class='docblock-short'>
+                                <p>The reply to a <a href="struct.RequestConfirmation.html"><code>RequestConfirmation</code></a></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Create.html'
+                                  title='kay::swarm::Create'>Create</a></td>
+                           <td class='docblock-short'>
+                                <p>A message for adding a new sub-actor to a <code>Swarm</code> given its initial state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.CreateWith.html'
+                                  title='kay::swarm::CreateWith'>CreateWith</a></td>
+                           <td class='docblock-short'>
+                                <p>A message for adding a new sub-actor to a <code>Swarm</code> given its initial state
+and an initial message that the sub-actor will handle immediately after creation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.RequestConfirmation.html'
+                                  title='kay::swarm::RequestConfirmation'>RequestConfirmation</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper for messages to request a confirmation about message receival.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Swarm.html'
+                                  title='kay::swarm::Swarm'>Swarm</a></td>
+                           <td class='docblock-short'>
+                                <p>Offers efficient storage and updating of large numbers of identical <code>SubActor</code>s
+and is typically used whenever there is more than one actor with the same type/behaviour.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ToRandom.html'
+                                  title='kay::swarm::ToRandom'>ToRandom</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper for messages to send a message to random sub-actors.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.RecipientAsSwarm.html'
+                                  title='kay::swarm::RecipientAsSwarm'>RecipientAsSwarm</a></td>
+                           <td class='docblock-short'>
+                                <p>Helper trait for dispatching messages either to <code>SubActor</code>s of a <code>Swarm</code> or the <code>Swarm</code> itself.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.StorageAware.html'
+                                  title='kay::swarm::StorageAware'>StorageAware</a></td>
+                           <td class='docblock-short'>
+                                <p>Trait that allows dynamically sized <code>SubActors</code> to provide
+a &quot;typical size&quot; hint to optimize their storage in a <code>Swarm</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.SubActor.html'
+                                  title='kay::swarm::SubActor'>SubActor</a></td>
+                           <td class='docblock-short'>
+                                <p>Trait that sub-actors of a <code>Swarm</code> have to implement in order for
+the Swarm to set the sub-actor id and the sub-actor to get its own id in a standardized way.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kay";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
